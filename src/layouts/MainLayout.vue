@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          CSV App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>change your csv files</div>
       </q-toolbar>
     </q-header>
 
@@ -49,48 +49,25 @@
 import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
+  
   {
     title: 'Github',
-    caption: 'github.com/quasarframework',
+    caption: 'github.com/emingenc/quic-csv-fix',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: 'https://github.com/emingenc/quic-csv-fix'
   },
   {
     title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
+    caption: 'channel Gench',
     icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    link: 'https://discord.gg/mMWGmBWE'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
+    title: 'Personel website',
+    caption: 'emingenc.github.io',
     icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    link: 'https://emingenc.github.io'
   },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
 ];
 
 import { defineComponent, ref } from 'vue'
