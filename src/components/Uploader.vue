@@ -83,6 +83,8 @@ export default {
               }
           }
           this.store.state.collumnsCsv = tableCollumns
+          this.store.state.visibleColumns = [...tableCollumns]
+          this.store.state.visibleColumns = this.store.state.visibleColumns.map(e => e.name)
 
           const tableRows = []
           for (var i=1; i < lines.length; i++) {

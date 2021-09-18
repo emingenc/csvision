@@ -8,7 +8,8 @@ const defaultState = {
   collumnsCsv:null,
   rowsCsv:null,
   fileNme:null,
-  grid:true,
+  grid:false,
+  visibleColumns:null,
   initialPagination: {
     sortBy: 'desc',
     descending: false,

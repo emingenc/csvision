@@ -35,8 +35,27 @@
       :row-key=" store.state.collumnsCsv[0].name"
       :filter="filter"
       v-model:pagination="store.state.initialPagination"
+      :visible-columns="store.state.visibleColumns"
     >
+   
     <template v-slot:top-right>
+
+        <q-select
+          v-model="store.state.visibleColumns"
+          multiple
+          outlined
+          dense
+          options-dense
+          :display-value="$q.lang.table.columns"
+          emit-value
+          map-options
+          :options="store.state.collumnsCsv"
+          option-value="name"
+          options-cover
+          style="min-width: 150px"
+          class="q-pr-xl"
+        />
+        
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
