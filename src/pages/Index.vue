@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
-    {{store.state.collumnsCsv}}
+    {{store.state.rowsCsv}}
     <div>
       <Table />
     </div>

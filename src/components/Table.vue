@@ -3,6 +3,7 @@
     <Uploader/>  
     <q-table
     v-if="store.state.collumnsCsv" 
+    style="max-width:700px"
       title="Treats"
       dense
       :rows="store.state.rowsCsv"

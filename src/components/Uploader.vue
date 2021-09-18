@@ -83,19 +83,18 @@ export default {
 
           const tableRows = []
           for (var i=1; i < lines.length; i++) {
-              let rowObject = {}
+              let rowObject = new Object
               for (var j=0; j < lines[i].length; j++) {
-                rowObject[collumns[j]] = lines[i].split(',')[j]
+                if (collumns[j] &&  lines[i]){
+                  rowObject[collumns[j]] = lines[i].split(',')[j]
+                  console.log(lines[i].split(','))
+                }
               }
-                if (rowObject === {}){
-
-                  console.log(rowObject)
-                }
-                else {
-                  tableRows.push(rowObject)
-
-                }
-
+              if(Object.keys(rowObject).length === 0){
+              }
+              else{
+                tableRows.push(rowObject)
+              }
             }
           this.store.state.rowsCsv = tableRows  
         })
