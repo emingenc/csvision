@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar >
         <q-btn
           flat
           dense
@@ -12,17 +12,17 @@
         />
 
         <q-toolbar-title>
-          CSV App
+           CSVision
         </q-toolbar-title>
 
-        <div>change your csv files</div>
+        <div>Awesome-csv</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       bordered
+      
     >
       <q-list>
         <q-item-label
@@ -52,13 +52,13 @@ const linksList = [
   
   {
     title: 'Github',
-    caption: 'github.com/emingenc/quic-csv-fix',
+    caption: 'github.com/emingenc/csvision',
     icon: 'code',
-    link: 'https://github.com/emingenc/quic-csv-fix'
+    link: 'https://github.com/emingenc/csvision'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'channel Gench',
+    title: 'Discord ',
+    caption: '',
     icon: 'chat',
     link: 'https://discord.gg/mMWGmBWE'
   },
