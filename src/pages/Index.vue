@@ -1,8 +1,8 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
-    {{store.state.filesCsv}}
+    {{store.state.collumnsCsv}}
     <div>
-      <Table class="row"/>
+      <Table />
     </div>
   </q-page>
 </template>

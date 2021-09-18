@@ -52,7 +52,53 @@ export default {
         if (val) {
         val[0]
         .text().
-        then(response => this.store.state.filesCsv = response)
+        then( response => {
+          const lines = response.split('\n')
+          const collumns = lines[0].split(',')
+          this.store.state.filesCsv = lines
+          const tableCollumns = []
+          for (var i = 0; i < collumns.length; i++){
+            if (collumns[i] ){
+              if (i == 0){
+                    tableCollumns.push(
+                      {
+                        name: collumns[i],
+                        required: true,
+                        label: collumns[i],
+                        align: 'left',
+                        field: row => row.name,
+                        format: val => `${val}`,
+                        sortable: true
+                      }
+                    )
+                  }
+                  else {
+                    tableCollumns
+                    .push({ name: collumns[i], label: collumns[i],
+                            field: collumns[i], sortable: true })
+                  }
+              }
+          }
+          this.store.state.collumnsCsv = tableCollumns
+
+          const tableRows = []
+          for (var i=1; i < lines.length; i++) {
+              let rowObject = {}
+              for (var j=0; j < lines[i].length; j++) {
+                rowObject[collumns[j]] = lines[i].split(',')[j]
+              }
+                if (rowObject === {}){
+
+                  console.log(rowObject)
+                }
+                else {
+                  tableRows.push(rowObject)
+
+                }
+
+            }
+          this.store.state.rowsCsv = tableRows  
+        })
         }
       }
   }
