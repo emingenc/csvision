@@ -26,6 +26,7 @@
     <q-table
       v-if="store.state.collumnsCsv" 
       :grid="grid"
+      :card-class="grid ? 'bg-primary text-white':''"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
       dense
