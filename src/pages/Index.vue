@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
+    {{store.state.filesCsv}}
     <div>
       <Table class="row"/>
     </div>
@@ -7,7 +8,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent , inject} from 'vue';
 import Table from "components/Table.vue";
 
 export default defineComponent({
@@ -15,5 +16,11 @@ export default defineComponent({
   components: {
     Table,
   },
+  setup(){
+    const store = inject("csvStore");
+    return{
+      store,
+    }
+  }
 })
 </script>

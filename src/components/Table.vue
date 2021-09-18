@@ -8,10 +8,7 @@
       :visible-columns="visibleColumns"
     >
       <template v-slot:top>
-        <img
-          style="height: 50px; width: 50px"
-          src="https://cdn.quasar.dev/logo-v2/svg/logo.svg"
-        >
+        <Uploader/>  
 
         <q-space />
 
@@ -35,6 +32,7 @@
   </div>
 </template>
 <script>
+import Uploader from "components/Uploader.vue";
 import { ref } from 'vue'
 
 const columns = [
@@ -160,6 +158,9 @@ const rows = [
 ]
 
 export default {
+  components: {
+    Uploader,
+  },
   setup () {
     return {
       visibleColumns: ref([ 'calories', 'desc', 'fat', 'carbs', 'protein', 'sodium', 'calcium', 'iron' ]),

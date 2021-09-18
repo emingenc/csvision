@@ -5,7 +5,7 @@ const STATE_NAME = "csvState";
 
 const defaultState = {
 
-  
+  filesCsv:null,
   
 }
 const getDefaultState = () => {

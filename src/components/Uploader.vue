@@ -1,8 +1,10 @@
 <template>
-  <q-file
+  <q-file 
+        accept="csv"
         style="max-width:300px;"
         v-model="filesCsv"
         rounded
+        clearable
         outlined
         label="Filtered (csv only)"
         multiple
@@ -14,15 +16,18 @@
 <script>
 
 import { useQuasar } from 'quasar'
-import { ref } from 'vue'
+import { ref,inject } from 'vue'
 
 export default {
   setup () {
     const $q = useQuasar()
+    const store = inject("csvStore");
 
     return {
+      store,
       filesMaxSize: ref(null),
       filesCsv: ref(null),
+
 
       checkFileSize (files) {
         return files.filter(file => file.size < 2048)
@@ -41,6 +46,15 @@ export default {
         })
       }
     }
+  },
+  watch:{
+      filesCsv(val){
+        if (val) {
+        val[0]
+        .text().
+        then(response => this.store.state.filesCsv = response)
+        }
+      }
   }
 }
 </script>
