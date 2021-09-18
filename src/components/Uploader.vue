@@ -1,31 +1,46 @@
 <template>
-  <q-uploader
-        style="max-width: 1200px"
-        url="http://localhost:4444/upload"
-        label="Just add one csv file"
+  <q-file
+        style="max-width:300px;"
+        v-model="filesCsv"
+        rounded
+        outlined
+        label="Filtered (csv only)"
         multiple
-        max-files="1"
+        :filter="checkFileType"
         @rejected="onRejected"
       />
 </template>
 
 <script>
+
 import { useQuasar } from 'quasar'
+import { ref } from 'vue'
 
 export default {
   setup () {
     const $q = useQuasar()
 
-    function onRejected (rejectedEntries) {
-      // Notify plugin needs to be installed
-      // https://quasar.dev/quasar-plugins/notify#Installation
-      $q.notify({
-        type: 'negative',
-        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
-      })
-    }
+    return {
+      filesMaxSize: ref(null),
+      filesCsv: ref(null),
 
-    return { onRejected }
+      checkFileSize (files) {
+        return files.filter(file => file.size < 2048)
+      },
+
+      checkFileType (files) {
+        return files.filter(file => file.type === 'text/csv')
+      },
+
+      onRejected (rejectedEntries) {
+        // Notify plugin needs to be installed
+        // https://quasar.dev/quasar-plugins/notify#Installation
+        $q.notify({
+          type: 'negative',
+          message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+        })
+      }
+    }
   }
 }
 </script>
