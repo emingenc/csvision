@@ -3,8 +3,8 @@
     <Uploader/>  
     <q-table
     v-if="store.state.collumnsCsv" 
-    style="max-width:700px"
-      title="Treats"
+    style="max-width:1000px"
+      :title="store.state.fileName.replace('.csv','')"
       dense
       :rows="store.state.rowsCsv"
       :row-key=" store.state.collumnsCsv[0].name"

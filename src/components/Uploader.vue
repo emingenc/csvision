@@ -6,11 +6,16 @@
         rounded
         clearable
         outlined
-        label="Filtered (csv only)"
+        icon="home"
+        label="  Upload csv"
         multiple
         :filter="checkFileType"
         @rejected="onRejected"
-      />
+      >
+      <template v-if="!filesCsv" v-slot:prepend>
+          <q-icon name="upload" />
+      </template>
+  </q-file>
 </template>
 
 <script>
@@ -53,9 +58,9 @@ export default {
         val[0]
         .text().
         then( response => {
+          this.store.state.fileName = val[0].name
           const lines = response.split('\n')
           const collumns = lines[0].split(',')
-          this.store.state.filesCsv = lines
           const tableCollumns = []
           for (var i = 0; i < collumns.length; i++){
             if (collumns[i] ){

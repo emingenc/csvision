@@ -5,9 +5,9 @@ const STATE_NAME = "csvState";
 
 const defaultState = {
 
-  filesCsv:null,
   collumnsCsv:null,
   rowsCsv:null,
+  fileNme:null,
   
 }
 const getDefaultState = () => {
