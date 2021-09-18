@@ -2,7 +2,7 @@
   <div class="q-pa-md ">
     <div class="flex justify-between">
     <Uploader /> 
-    <div class="text-primary">
+    <div v-if="store.state.collumnsCsv"  class="text-primary">
     change view:
     <q-btn
           color="primary"
@@ -14,6 +14,7 @@
     </div>
 
     <q-btn
+          v-if="store.state.collumnsCsv" 
           color="primary"
           flat
           icon-right="archive"
@@ -33,6 +34,7 @@
       :rows="store.state.rowsCsv"
       :row-key=" store.state.collumnsCsv[0].name"
       :filter="filter"
+      v-model:pagination="store.state.initialPagination"
     >
     <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">

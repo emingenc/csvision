@@ -8,6 +8,13 @@ const defaultState = {
   collumnsCsv:null,
   rowsCsv:null,
   fileNme:null,
+  initialPagination: {
+    sortBy: 'desc',
+    descending: false,
+    page: 1,
+    rowsPerPage: 50
+    // rowsNumber: xx if getting data from a server
+  },
   
 }
 const getDefaultState = () => {
