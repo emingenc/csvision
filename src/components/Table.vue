@@ -1,16 +1,31 @@
 <template>
-  <div class="q-pa-md wrap">
-    <Uploader/>  
+  <div class="q-pa-md ">
+    <div class="flex justify-between">
+    <Uploader /> 
+    <div class="text-primary">
+    change view:
     <q-btn
           color="primary"
+          flat
+          :label="grid ? 'grid' : 'table'"
+          no-caps
+          @click="grid=!grid"
+        /> 
+    </div>
+
+    <q-btn
+          color="primary"
+          flat
           icon-right="archive"
           class='absolute-top-right'
           label="Export"
           no-caps
           @click="exportTable"
         />
+    </div>
     <q-table
       v-if="store.state.collumnsCsv" 
+      :grid="grid"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
       dense
@@ -68,6 +83,7 @@ export default {
     return {
       store : inject("csvStore"),
       filter: ref(''),
+      grid: ref(false),
       
       }
   },

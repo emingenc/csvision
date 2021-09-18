@@ -3,9 +3,7 @@
         accept="csv"
         style="max-width:300px;"
         v-model="filesCsv"
-        rounded
         clearable
-        outlined
         icon="home"
         label="  Upload csv"
         multiple
