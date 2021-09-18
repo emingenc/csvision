@@ -85,9 +85,13 @@ export default {
           for (var i=1; i < lines.length; i++) {
               let rowObject = new Object
               for (var j=0; j < lines[i].length; j++) {
-                if (collumns[j] &&  lines[i]){
-                  rowObject[collumns[j]] = lines[i].split(',')[j]
-                  console.log(lines[i].split(','))
+                let key = collumns[j]
+                let value = lines[i].split(',')[j]
+                if (!isNaN(value)){
+                  value = Number(value)
+                }
+                if (key ){
+                  rowObject[key] = value
                 }
               }
               if(Object.keys(rowObject).length === 0){

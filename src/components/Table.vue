@@ -15,8 +15,6 @@
 import Uploader from "components/Uploader.vue";
 import {  inject } from 'vue'
 
-
-
 export default {
   components: {
     Uploader,
