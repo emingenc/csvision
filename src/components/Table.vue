@@ -7,9 +7,9 @@
     <q-btn
           color="primary"
           flat
-          :label="grid ? 'grid' : 'table'"
+          :label="this.store.state.grid ? 'grid' : 'table'"
           no-caps
-          @click="grid=!grid"
+          @click="this.store.state.grid=!this.store.state.grid"
         /> 
     </div>
 
@@ -26,8 +26,8 @@
     </div>
     <q-table
       v-if="store.state.collumnsCsv" 
-      :grid="grid"
-      :card-class="grid ? 'bg-primary text-white':''"
+      :grid="this.store.state.grid"
+      :card-class="this.store.state.grid ? 'bg-primary text-white':''"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
       dense
@@ -86,7 +86,6 @@ export default {
     return {
       store : inject("csvStore"),
       filter: ref(''),
-      grid: ref(false),
       
       }
   },
