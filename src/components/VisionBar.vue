@@ -11,7 +11,7 @@
         class='q-pl-xl q-pt-sm'
         label-color="white"
         filled
-        v-model="store.state.xaxis"
+        v-model="xaxis"
         use-input
         input-debounce="0"
         label="X axis"
@@ -33,7 +33,7 @@
       class='q-pl-xl q-pt-sm'
       label-color="white"
         filled
-        v-model="store.state.yaxis"
+        v-model="yaxis"
         use-input
         input-debounce="0"
         label="Y axis"
@@ -50,6 +50,7 @@
           </q-item>
         </template>
       </q-select>
+      <q-btn  flat dense color="white" icon="check" label="Visiualise" @click="Visiualise" />
       
     </div>
 </template>
@@ -62,10 +63,14 @@ export default {
         const store = inject("csvStore");
       let stringOptions = [...store.state.visibleColumns]
     let options = ref(stringOptions)
+    let xaxis = ref(store.state.xaxis)
+    let yaxis = ref(store.state.yaxis)
 
     return {
       store,
       options,
+      xaxis,
+      yaxis,
 
       filterFn (val, update) {
         if (val === '') {
@@ -80,6 +85,23 @@ export default {
           options.value = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
         })
       }
+    }
+  },
+  methods:{
+    Visiualise(){
+        this.store.state.dashboard = !this.store.state.dashboard
+        setTimeout(()=>{this.store.state.dashboard = !this.store.state.dashboard},1)
+        
+      },
+  },
+  watch:{
+    xaxis(val){
+      this.store.state.xaxis = val
+      this.Visiualise()
+    },
+    yaxis(val){
+      this.store.state.yaxis = val
+      this.Visiualise()
     }
   }
 }
