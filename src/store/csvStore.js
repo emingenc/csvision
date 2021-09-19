@@ -33,7 +33,17 @@ const methods = {
   
 }
 
-const getters = {}
+const getters = {
+  getRowData(rowKey){
+    if( state.rowsCsv){
+      let rows = state.rowsCsv.map(el => {
+        return el[rowKey]
+      })
+      console.log(rows)
+      return rows
+    }
+  }
+}
 
 watch(
   () => state,
