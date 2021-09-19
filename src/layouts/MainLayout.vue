@@ -15,7 +15,7 @@
            CSVision
         </q-toolbar-title>
 
-        <div>Awesome-csv</div>
+        <div>drop your csv do magic on it</div>
       </q-toolbar>
     </q-header>
 
@@ -28,7 +28,7 @@
         <q-item-label
           header
         >
-          Essential Links
+         Links
         </q-item-label>
 
         <EssentialLink
