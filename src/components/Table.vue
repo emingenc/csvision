@@ -107,36 +107,36 @@ export default {
     return {
       store : inject("csvStore"),
       filter: ref(''),
-      $q
-      
       }
   },
   methods:{
     exportTable () {
         // naive encoding to csv format
-        console.log(this.$refs.csvtable)
-        // const content = [this.$q.lang.table.columns.map(col => wrapCsvValue(col.label))].concat(
-        //   this.$q.lang.table.row.map(row => this.$q.lang.table.columns.map(col => wrapCsvValue(
-        //     typeof col.field === 'function'
-        //       ? col.field(row)
-        //       : row[ col.field === void 0 ? col.name : col.field ],
-        //     col.format
-        //   )).join(','))
-        // ).join('\r\n')
+        let filteredRows = this.$refs.csvtable.filteredSortedRows
+        let filteredColumns = Object.keys(filteredRows[0])
+        filteredColumns = this.$refs.csvtable.columns.filter(e => this.store.state.visibleColumns.includes(e.name) )
+        const content = [filteredColumns.map(col => wrapCsvValue(col.label))].concat(
+          filteredRows.map(row => filteredColumns.map(col => wrapCsvValue(
+            typeof col.field === 'function'
+              ? col.field(row)
+              : row[ col.field === void 0 ? col.name : col.field ],
+            col.format
+          )).join(','))
+        ).join('\r\n')
 
-        // const status = exportFile(
-        //   this.store.state.fileName,
-        //   content,
-        //   'text/csv'
-        // )
+        const status = exportFile(
+          this.store.state.fileName,
+          content,
+          'text/csv'
+        )
 
-        // if (status !== true) {
-        //   $q.notify({
-        //     message: 'Browser denied file download...',
-        //     color: 'negative',
-        //     icon: 'warning'
-        //   })
-        // }
+        if (status !== true) {
+          $q.notify({
+            message: 'Browser denied file download...',
+            color: 'negative',
+            icon: 'warning'
+          })
+        }
       }
   }
 }
