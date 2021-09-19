@@ -2,7 +2,7 @@
   <div class="q-pa-md ">
     <div class="flex justify-between">
     <Uploader /> 
-    <div v-if="store.state.collumnsCsv"  class="text-primary">
+    <div v-if="store.state.columnsCsv"  class="text-primary">
     change view:
     <q-btn
           color="primary"
@@ -14,7 +14,7 @@
     </div>
 
     <q-btn
-          v-if="store.state.collumnsCsv" 
+          v-if="store.state.columnsCsv" 
           color="primary"
           flat
           icon-right="archive"
@@ -26,15 +26,15 @@
     </div>
     <q-table
       ref="csvtable"
-      v-if="store.state.collumnsCsv" 
+      v-if="store.state.columnsCsv" 
       :dense="$q.screen.lt.md"
       :grid="this.store.state.grid"
       :card-class="this.store.state.grid ? 'bg-primary text-white':''"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
-      :columns="store.state.collumnsCsv"
+      :columns="store.state.columnsCsv"
       :rows="store.state.rowsCsv"
-      :row-key=" store.state.collumnsCsv[0].name"
+      :row-key=" store.state.columnsCsv[0].name"
       :filter="filter"
       v-model:pagination="store.state.initialPagination"
       :visible-columns="store.state.visibleColumns"
@@ -51,7 +51,7 @@
           :display-value="'Visible '+$q.lang.table.columns"
           emit-value
           map-options
-          :options="store.state.collumnsCsv"
+          :options="store.state.columnsCsv"
           option-value="name"
           options-cover
           style="min-width: 150px"

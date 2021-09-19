@@ -5,7 +5,7 @@ const STATE_NAME = "csvState";
 
 const defaultState = {
 
-  collumnsCsv:null,
+  columnsCsv:null,
   rowsCsv:null,
   fileNme:null,
   grid:false,
