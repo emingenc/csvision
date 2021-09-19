@@ -5,8 +5,6 @@ on: [push, pull_request]
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
-    env:
-        GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
     strategy:
       matrix:
@@ -29,7 +27,7 @@ jobs:
         run: yarn global add @quasar/cli
 
       - name: Generate
-        run: quasar build
+        run: GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }} quasar build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
