@@ -68,24 +68,10 @@ export default {
           const tableCollumns = []
           for (var i = 0; i < collumns.length; i++){
             if (collumns[i] ){
-              if (i == 0){
-                    tableCollumns.push(
-                      {
-                        name: collumns[i],
-                        required: true,
-                        label: collumns[i],
-                        align: 'left',
-                        field: row => row.name,
-                        format: val => `${val}`,
-                        sortable: true
-                      }
-                    )
-                  }
-                  else {
-                    tableCollumns
-                    .push({ name: collumns[i], label: collumns[i],
-                            field: collumns[i], sortable: true })
-                  }
+                tableCollumns.push(
+                  { name: collumns[i], label: collumns[i],
+                        field: collumns[i], sortable: true }
+                )
               }
           }
           this.store.state.collumnsCsv = tableCollumns

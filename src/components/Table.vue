@@ -25,12 +25,14 @@
         />
     </div>
     <q-table
+      ref="csvtable"
       v-if="store.state.collumnsCsv" 
       :grid="this.store.state.grid"
       :card-class="this.store.state.grid ? 'bg-primary text-white':''"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
       dense
+      :columns="store.state.collumnsCsv"
       :rows="store.state.rowsCsv"
       :row-key=" store.state.collumnsCsv[0].name"
       :filter="filter"
@@ -46,7 +48,7 @@
           outlined
           dense
           options-dense
-          :display-value="$q.lang.table.columns"
+          :display-value="'Visible '+$q.lang.table.columns"
           emit-value
           map-options
           :options="store.state.collumnsCsv"
@@ -105,34 +107,36 @@ export default {
     return {
       store : inject("csvStore"),
       filter: ref(''),
+      $q
       
       }
   },
   methods:{
     exportTable () {
         // naive encoding to csv format
-        const content = [this.store.state.collumnsCsv.map(col => wrapCsvValue(col.label))].concat(
-          this.store.state.rowsCsv.map(row => this.store.state.collumnsCsv.map(col => wrapCsvValue(
-            typeof col.field === 'function'
-              ? col.field(row)
-              : row[ col.field === void 0 ? col.name : col.field ],
-            col.format
-          )).join(','))
-        ).join('\r\n')
+        console.log(this.$refs.csvtable)
+        // const content = [this.$q.lang.table.columns.map(col => wrapCsvValue(col.label))].concat(
+        //   this.$q.lang.table.row.map(row => this.$q.lang.table.columns.map(col => wrapCsvValue(
+        //     typeof col.field === 'function'
+        //       ? col.field(row)
+        //       : row[ col.field === void 0 ? col.name : col.field ],
+        //     col.format
+        //   )).join(','))
+        // ).join('\r\n')
 
-        const status = exportFile(
-          this.store.state.fileName,
-          content,
-          'text/csv'
-        )
+        // const status = exportFile(
+        //   this.store.state.fileName,
+        //   content,
+        //   'text/csv'
+        // )
 
-        if (status !== true) {
-          $q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
+        // if (status !== true) {
+        //   $q.notify({
+        //     message: 'Browser denied file download...',
+        //     color: 'negative',
+        //     icon: 'warning'
+        //   })
+        // }
       }
   }
 }
