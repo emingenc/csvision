@@ -1,8 +1,14 @@
 <template>
   <q-file 
         accept="csv"
-        style="max-width:300px;"
+        :label-color="filesCsv?'':''"
+        :icon-color="filesCsv?'':'white'"
+        :bg-color="filesCsv?'':''"
+        :rounded ="filesCsv?false:true"
+        :outlined ="filesCsv?false:true"
+        :style="filesCsv?'max-width:300px':'max-width:400px'"
         v-model="filesCsv"
+        :dense ="filesCsv?true:false"
         clearable
         icon="home"
         label="  Upload csv"
