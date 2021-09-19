@@ -35,6 +35,7 @@
       :rows="store.state.rowsCsv"
       :row-key=" store.state.columnsCsv[0].name"
       :filter="filter"
+      :filter-method="filterMethod"
       v-model:pagination="store.state.initialPagination"
       :visible-columns="store.state.visibleColumns"
     >
@@ -109,6 +110,13 @@ export default {
       }
   },
   methods:{
+    
+    filterMethod (rows, terms, cols){
+      // rows contain the entire data
+      // terms contains whatever you have as filter
+      
+      console.log(terms,cols)
+      },
     exportTable () {
         // naive encoding to csv format
         let filteredRows = this.$refs.csvtable.filteredSortedRows
