@@ -27,11 +27,11 @@
     <q-table
       ref="csvtable"
       v-if="store.state.collumnsCsv" 
+      :dense="$q.screen.lt.md"
       :grid="this.store.state.grid"
       :card-class="this.store.state.grid ? 'bg-primary text-white':''"
       style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
-      dense
       :columns="store.state.collumnsCsv"
       :rows="store.state.rowsCsv"
       :row-key=" store.state.collumnsCsv[0].name"
