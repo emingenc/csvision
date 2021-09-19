@@ -1,22 +1,22 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
+      <VisionBar/>
     <div>
-      <Dashboard/>
-      <Table />
+      <BarChart/>
     </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent , inject} from 'vue';
-import Table from "components/Table.vue";
-import Dashboard from "components/Dashboard.vue";
+import BarChart from "components/apexcharts/BarChart.vue";
+import VisionBar from "components/VisionBar.vue";
 
 export default defineComponent({
   name: 'PageIndex',
   components: {
-    Table,
-    Dashboard
+    BarChart,
+    VisionBar
   },
   setup(){
     const store = inject("csvStore");

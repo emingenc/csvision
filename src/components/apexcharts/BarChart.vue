@@ -13,24 +13,42 @@
 <script>
 import { defineComponent , inject} from 'vue';
 
+
 export default defineComponent({
+  
   setup(){
     const store = inject("csvStore");
-    return{
-      store,
-      options: {
+    const xaxis = store.getters.getRowData(store.state.xaxis)
+    const yaxis = store.getters.getRowData(store.state.yaxis)
+    const yaxisSelected = store.state.yaxis
+    const xaxisSelected = store.state.xaxis
+    const options = () => {return {
         chart: {
           id: 'vuechart-example'
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+          categories: xaxis
         }
-      },
-      series: [{
-        name: 'yaxis',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }]
-    }
+      }
   }
+    const series =()=>{return [{
+        name: yaxisSelected,
+        data: yaxis
+      }]}
+    return{
+      store,
+      yaxisSelected,
+      xaxisSelected,
+      options: options(),
+      series: series()
+    }
+  },
+  watch:{
+    yaxisSelected(){
+      this.options = this.options()
+      this.series = this.series()
+    }
+    
+  },
 })
 </script>

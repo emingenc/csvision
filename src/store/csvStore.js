@@ -1,4 +1,4 @@
-import { reactive, watch } from "vue";
+import { reactive, watch, computed } from "vue";
 
 const STATE_NAME = "csvState";
 
@@ -17,6 +17,9 @@ const defaultState = {
     rowsPerPage: 50
     // rowsNumber: xx if getting data from a server
   },
+
+  xaxis:null, //xaxis
+  yaxis:null, //yaxis
   
 }
 const getDefaultState = () => {
@@ -34,16 +37,15 @@ const methods = {
 }
 
 const getters = {
-  getRowData(rowKey){
-    if( state.rowsCsv){
+  getRowData: (rowKey)=> {
+      if( state.rowsCsv){
       let rows = state.rowsCsv.map(el => {
         return el[rowKey]
       })
-      console.log(rows)
       return rows
     }
-  }
-}
+    return ''
+  } }
 
 watch(
   () => state,
