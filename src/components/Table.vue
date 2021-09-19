@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md ">
-    <div class="flex justify-between">
+    <div class="flex flex-center justify-between">
     <Uploader /> 
     <div v-if="store.state.columnsCsv"  class="text-primary">
     change view:
@@ -18,7 +18,7 @@
           color="primary"
           flat
           icon-right="archive"
-          class='absolute-top-right'
+          class=''
           label="Export"
           no-caps
           @click="exportTable"
@@ -30,7 +30,6 @@
       :dense="$q.screen.lt.md"
       :grid="this.store.state.grid"
       :card-class="this.store.state.grid ? 'bg-primary text-white':''"
-      style="max-width:1000px"
       :title="store.state.fileName.replace('.csv','')"
       :columns="store.state.columnsCsv"
       :rows="store.state.rowsCsv"
@@ -138,6 +137,7 @@ export default {
           })
         }
       }
-  }
+  },
+  
 }
 </script>

@@ -7,6 +7,7 @@ const defaultState = {
 
   columnsCsv:null,
   rowsCsv:null,
+  filteredRows:null,
   fileNme:null,
   grid:false,
   visibleColumns:null,
@@ -20,6 +21,7 @@ const defaultState = {
 
   xaxis:null, //xaxis
   yaxis:null, //yaxis
+  dashboard:false,
   
 }
 const getDefaultState = () => {

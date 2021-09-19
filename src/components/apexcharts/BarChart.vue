@@ -1,12 +1,9 @@
 <template>
-  <q-page class="flex flex-center q-pa-md">
+  <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="500" type="bar" 
+      <apexchart v-if="store.state.columnsCsv" width="1100" type="bar" 
       :options="options" :series="series"></apexchart>
     </div>
-    <q-btn @click="store.getters.getRowData('Total Cases')">
-
-    </q-btn>
   </q-page>
 </template>
 

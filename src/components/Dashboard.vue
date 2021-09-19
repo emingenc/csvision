@@ -1,10 +1,10 @@
 <template>
-  <q-page class="flex flex-center q-pa-md">
+  <div class="flex flex-center ">
       <VisionBar/>
-    <div>
+    <div v-if="store.state.dashboard">
       <BarChart/>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script>

@@ -97,7 +97,8 @@ export default {
                 tableRows.push(rowObject)
               }
             }
-          this.store.state.rowsCsv = tableRows  
+          this.store.state.rowsCsv = tableRows 
+           
         })
         }
       }

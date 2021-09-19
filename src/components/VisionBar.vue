@@ -1,6 +1,14 @@
 <template>
-  <div class="q-gutter-md row bg-primary ">
+  <div class=" row flex justify-around bg-primary full-width ">
+      <div class='q-pl-xl text-white text-caption'>
+
+      <p class='q-pt-sm' >Vision Bar</p>
+      <div class="q-gutter-sm">
+      <q-checkbox v-model="store.state.dashboard" label="Dashboard" />
+    </div>
+      </div>
       <q-select
+        class='q-pl-xl q-pt-sm'
         label-color="white"
         filled
         v-model="store.state.xaxis"
@@ -22,6 +30,7 @@
       </q-select>
 
       <q-select
+      class='q-pl-xl q-pt-sm'
       label-color="white"
         filled
         v-model="store.state.yaxis"
