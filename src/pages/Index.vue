@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
     <div>
-      <Dashboard/>
+      <Dashboard v-if="store.state.columnsCsv"/>
       <Table />
     </div>
   </q-page>
