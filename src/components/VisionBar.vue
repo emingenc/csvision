@@ -14,7 +14,7 @@
         v-model="xaxis"
         use-input
         input-debounce="0"
-        label="X axis"
+        label="Labels"
         :options="options"
         @filter="filterFn"
         style="width: 250px"
@@ -36,7 +36,7 @@
         v-model="yaxis"
         use-input
         input-debounce="0"
-        label="Y axis"
+        label="Values"
         :options="options"
         @filter="filterFn"
         style="width: 250px"
@@ -50,7 +50,6 @@
           </q-item>
         </template>
       </q-select>
-      <q-btn @click='Visiualise' flat round color="white" icon="refresh" />
     </div>
 </template>
 
@@ -87,20 +86,16 @@ export default {
     }
   },
   methods:{
-    Visiualise(){
-        this.store.state.dashboard = !this.store.state.dashboard
-        setTimeout(()=>{this.store.state.dashboard = !this.store.state.dashboard},1)
-        
-      },
+    
   },
   watch:{
     xaxis(val){
       this.store.state.xaxis = val
-      this.Visiualise()
+      this.store.methods.Visiualise()
     },
     yaxis(val){
       this.store.state.yaxis = val
-      this.Visiualise()
+      this.store.methods.Visiualise()
     }
   }
 }
