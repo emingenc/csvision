@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="600" type="bar" 
+      <apexchart v-if="store.state.columnsCsv" width="300" type="donut" 
       :options="options" :series="series"></apexchart>
     </div>
   </q-page>
@@ -19,19 +19,10 @@ export default defineComponent({
     const yaxis = store.getters.getRowData(store.state.yaxis)
     const yaxisSelected = store.state.yaxis
     const xaxisSelected = store.state.xaxis
-    const options = () => {return {
-        chart: {
-          id: 'vuechart-example'
-        },
-        xaxis: {
-          categories: xaxis
-        }
-      }
+    const options = () => {
+      return [...xaxis]
   }
-    const series =()=>{return [{
-        name: yaxisSelected,
-        data: yaxis
-      }]}
+    const series =()=>{return [...yaxis]}
     return{
       store,
       yaxisSelected,

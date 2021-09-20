@@ -10,6 +10,7 @@
 <script>
 import { defineComponent , inject} from 'vue';
 import BarChart from "components/apexcharts/BarChart.vue";
+import PieChart from "components/apexcharts/PieChart.vue";
 import VisionBar from "components/VisionBar.vue";
 
 export default defineComponent({
