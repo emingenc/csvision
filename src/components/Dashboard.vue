@@ -1,9 +1,13 @@
 <template>
   <div class="flex flex-center ">
       <VisionBar/>
-    <div class="row flex justify-between" v-if="store.state.dashboard">
+    <div class="row " v-if="store.state.dashboard">
       <BarChart/>
+      <div>
+
+      <TreeMap/>
       <PieChart/>
+      </div>
     </div>
   </div>
 </template>
@@ -12,6 +16,7 @@
 import { defineComponent , inject} from 'vue';
 import BarChart from "components/apexcharts/BarChart.vue";
 import PieChart from "components/apexcharts/PieChart.vue";
+import TreeMap from "components/apexcharts/TreeMap.vue";
 import VisionBar from "components/VisionBar.vue";
 
 export default defineComponent({
@@ -19,6 +24,7 @@ export default defineComponent({
   components: {
     BarChart,
     PieChart,
+    TreeMap,
     VisionBar
   },
   setup(){
