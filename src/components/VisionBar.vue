@@ -59,7 +59,7 @@ import { ref,inject } from 'vue'
 export default {
     setup () {
         const store = inject("csvStore");
-      let stringOptions = [...store.state.visibleColumns]
+      let stringOptions = store.state.visibleColumns?[...store.state.visibleColumns]:[]
     let options = ref(stringOptions)
     let xaxis = ref(store.state.xaxis)
     let yaxis = ref(store.state.yaxis)
