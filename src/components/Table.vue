@@ -176,10 +176,7 @@ export default {
       } catch (error) {
         this.store.state.filteredRows =rows
         
-      this.store.methods.Visiualise()
-
-
-
+        this.store.methods.Visiualise()
         return rows
       }
       

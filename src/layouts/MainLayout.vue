@@ -16,7 +16,7 @@
         </q-toolbar-title>
         <div class="fill">
 
-          <VisionBar/>
+          <VisionBar v-if="store.state.columnsCsv"/>
         </div>
       </q-toolbar>
     </q-header>
@@ -50,6 +50,7 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 import VisionBar from "components/VisionBar.vue";
+import csvStore from 'src/store/csvStore';
 
 const linksList = [
   
@@ -73,7 +74,7 @@ const linksList = [
   },
 ];
 
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, inject } from 'vue'
 
 export default defineComponent({
   name: 'MainLayout',
@@ -85,8 +86,10 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
+    const store = inject('csvStore')
 
     return {
+      store,
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
