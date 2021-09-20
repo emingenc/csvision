@@ -1,8 +1,9 @@
 <template>
   <div class="flex flex-center ">
       <VisionBar/>
-    <div v-if="store.state.dashboard">
+    <div class="row flex justify-between" v-if="store.state.dashboard">
       <BarChart/>
+      <PieChart/>
     </div>
   </div>
 </template>
@@ -17,6 +18,7 @@ export default defineComponent({
   name: 'PageIndex',
   components: {
     BarChart,
+    PieChart,
     VisionBar
   },
   setup(){

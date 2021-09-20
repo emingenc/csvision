@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="300" type="donut" 
+      <apexchart v-if="store.state.columnsCsv" width="400" type="donut" 
       :options="options" :series="series"></apexchart>
     </div>
   </q-page>
@@ -20,9 +20,23 @@ export default defineComponent({
     const yaxisSelected = store.state.yaxis
     const xaxisSelected = store.state.xaxis
     const options = () => {
-      return [...xaxis]
-  }
-    const series =()=>{return [...yaxis]}
+      return{
+        labels: xaxis,
+        plotOptions: {
+              pie: {
+                donut: {
+                  labels: {
+                    show: true,
+                    total: {
+                      showAlways: true,
+                      show: true
+                    }
+                  }
+                }
+              }
+      }
+  }}
+    const series =()=>{return yaxis}
     return{
       store,
       yaxisSelected,
