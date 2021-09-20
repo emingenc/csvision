@@ -129,7 +129,7 @@ export default {
   setup () {
     const store = inject("csvStore")
     const $q = useQuasar()
-    let stringOptions = [...store.state.visibleColumns]
+    let stringOptions = store.state.visibleColumns?[...store.state.visibleColumns]:[]
     let options = ref(stringOptions)
     let column = store.state.filterColumnName
     return {
