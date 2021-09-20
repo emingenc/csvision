@@ -41,7 +41,7 @@
     >
    
     <template 
-    v-if="store.state.visibleColumns" 
+    v-if="store.state.columnsCsv" 
      v-slot:top-right>
 
         <q-select
