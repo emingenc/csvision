@@ -50,8 +50,6 @@
           </q-item>
         </template>
       </q-select>
-      <q-btn  flat dense color="white" icon="check" label="Visiualise" @click="Visiualise" />
-      
     </div>
 </template>
 

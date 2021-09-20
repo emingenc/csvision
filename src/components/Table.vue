@@ -57,10 +57,31 @@
           style="min-width: 150px"
           class="q-pr-xl"
         />
-        
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+
+        <q-select
+        class='q-pl-xl q-pt-sm'
+        label-color="primary"
+        filled
+        v-model="column"
+        use-input
+        input-debounce="0"
+        label="Filter for"
+        :options="options"
+        @filter="filterFn"
+        style="width: 250px"
+        behavior="menu"
+      >
+      <template v-slot:no-option>
+          <q-item>
+            <q-item-section class="text-primary">
+              No results
+            </q-item-section>
+          </q-item>
+        </template>
+      </q-select>
+        <q-input borderless dense debounce="300" v-model="filter" placeholder="Filter">
           <template v-slot:append>
-            <q-icon name="search" />
+            <q-icon name="filter_list" />
           </template>
         </q-input>
         
@@ -103,19 +124,52 @@ export default {
     Uploader,
   },
   setup () {
+    const store = inject("csvStore")
     const $q = useQuasar()
+    let stringOptions = [...store.state.visibleColumns]
+    let options = ref(stringOptions)
     return {
-      store : inject("csvStore"),
+      store ,
+      options,
+      column: ref(null),
       filter: ref(''),
+      filterFn (val, update) {
+        if (val === '') {
+          update(() => {
+            options.value = stringOptions
+          })
+          return
+        }
+
+        update(() => {
+          const needle = val.toLowerCase()
+          options.value = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
+        })
+      }
       }
   },
   methods:{
     
     filterMethod (rows, terms, cols){
       // rows contain the entire data
-      // terms contains whatever you have as filter
+      // keyword contains whatever you have as filter
+      try {
+        let result = rows.filter(row=>{
+        if (terms.includes('>') || terms.includes('<')){
+          
+           return eval(`${row[this.column]}${terms}`)
+         
+        }
+        else {
+          return String(row[this.column]).toLowerCase().includes(terms)
+        }
+       
+      })
+      return result
+      } catch (error) {
+        return rows
+      }
       
-      console.log(terms,cols)
       },
     exportTable () {
         // naive encoding to csv format
