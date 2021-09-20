@@ -1,9 +1,9 @@
 {
   "name": "quick-csv-fix",
   "version": "0.0.1",
-  "description": "drag and drop your csv edit and fix quickly, export your csv",
-  "productName": "simple quick csv editor",
-  "author": "emingench@yandex.com",
+  "description": "drag and drop your csv filter , visualize quickly and export your csv",
+  "productName": "CSVision - csv app ",
+  "author": "emingench@gmail.com",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
