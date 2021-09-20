@@ -10,7 +10,7 @@
         class='q-ml-xl q-pb-lg'
         label-color="white"
         filled
-        v-model="store.state.xaxis"
+        v-model="xaxis"
         use-input
         input-debounce="0"
         label="Labels"
@@ -32,7 +32,7 @@
       class='q-ml-xl q-pb-lg'
       label-color="white"
         filled
-        v-model="store.state.yaxis"
+        v-model="yaxis"
         use-input
         input-debounce="0"
         label="Values"
@@ -63,12 +63,16 @@ import { ref,inject } from 'vue'
 export default {
     setup () {
         const store = inject("csvStore");
-      let stringOptions = [...store.state.visibleColumns]
+      let stringOptions = store.state.visibleColumns?[...store.state.visibleColumns]:[]
     let options = ref(stringOptions)
+    let xaxis = ref(store.state.xaxis)
+    let yaxis = ref(store.state.yaxis)
 
     return {
       store,
       options,
+      xaxis,
+      yaxis,
 
       filterFn (val, update) {
         if (val === '') {
