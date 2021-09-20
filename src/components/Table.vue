@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md ">
-    <div class="flex flex-center justify-between">
+    <div class="flex justify-between">
     <Uploader /> 
     <div v-if="store.state.columnsCsv"  class="text-primary">
     change view:
@@ -171,10 +171,15 @@ export default {
       })
       this.store.state.filteredRows = result
 
+      this.store.methods.Visiualise()
       return result
       } catch (error) {
         this.store.state.filteredRows =rows
-      
+        
+      this.store.methods.Visiualise()
+
+
+
         return rows
       }
       

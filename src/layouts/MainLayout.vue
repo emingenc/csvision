@@ -14,8 +14,10 @@
         <q-toolbar-title>
            CSVision
         </q-toolbar-title>
+        <div class="fill">
 
-        <div>drop your csv do magic on it</div>
+          <VisionBar/>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -47,6 +49,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import VisionBar from "components/VisionBar.vue";
 
 const linksList = [
   
@@ -76,7 +79,8 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
+    VisionBar
   },
 
   setup () {

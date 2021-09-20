@@ -1,14 +1,13 @@
 <template>
-  <div class=" row flex justify-around bg-primary full-width ">
-      <div class='q-pl-xl text-white text-caption'>
-
-      <p class='q-pt-sm' >Vision Bar</p>
-      <div class="q-gutter-sm">
-      <q-checkbox v-model="store.state.dashboard" label="Dashboard" />
-    </div>
+  <div class="q-pt-xl  row flex justify-around bg-primary  fill">
+      <div class='q-ml-md q-pr-xl  q-mb-lg row text-white text-caption'>
+     
+      <q-checkbox  v-model="store.state.dashboard" label="Dashboard" />
       </div>
+      <div v-if="store.state.dashboard" class="row">
+
       <q-select
-        class='q-pl-xl q-pt-sm'
+        class='q-ml-xl q-pb-lg'
         label-color="white"
         filled
         v-model="xaxis"
@@ -30,7 +29,7 @@
       </q-select>
 
       <q-select
-      class='q-pl-xl q-pt-sm'
+      class='q-ml-xl q-pb-lg'
       label-color="white"
         filled
         v-model="yaxis"
@@ -50,6 +49,11 @@
           </q-item>
         </template>
       </q-select>
+      </div>
+      <div class="text-white q-pb-md" v-else>
+        You can check the box to see the CSVision dashboard.
+      </div>
+
     </div>
 </template>
 
