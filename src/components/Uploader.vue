@@ -101,6 +101,7 @@ export default {
               }
             }
           this.store.state.rowsCsv = tableRows 
+          this.store.methods.Visiualise()
            
         })
         }

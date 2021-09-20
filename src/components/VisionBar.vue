@@ -1,20 +1,19 @@
 <template>
-  <div class=" row flex justify-around bg-primary full-width ">
-      <div class='q-pl-xl text-white text-caption'>
-
-      <p class='q-pt-sm' >Vision Bar</p>
-      <div class="q-gutter-sm">
-      <q-checkbox v-model="store.state.dashboard" label="Dashboard" />
-    </div>
+  <div class="q-pt-xl  row flex justify-around bg-primary  fill">
+      <div class='q-ml-md q-pr-xl  q-mb-lg row text-white text-caption'>
+     
+      <q-checkbox  v-model="store.state.dashboard" label="Dashboard" />
       </div>
+      <div v-if="store.state.dashboard" class="row">
+
       <q-select
-        class='q-pl-xl q-pt-sm'
+        class='q-ml-xl q-pb-lg'
         label-color="white"
         filled
         v-model="xaxis"
         use-input
         input-debounce="0"
-        label="X axis"
+        label="Labels"
         :options="options"
         @filter="filterFn"
         style="width: 250px"
@@ -30,13 +29,13 @@
       </q-select>
 
       <q-select
-      class='q-pl-xl q-pt-sm'
+      class='q-ml-xl q-pb-lg'
       label-color="white"
         filled
         v-model="yaxis"
         use-input
         input-debounce="0"
-        label="Y axis"
+        label="Values"
         :options="options"
         @filter="filterFn"
         style="width: 250px"
@@ -50,7 +49,11 @@
           </q-item>
         </template>
       </q-select>
-      <q-btn @click='Visiualise' flat round color="white" icon="refresh" />
+      </div>
+      <div class="text-white q-pb-md" v-else>
+        You can check the box to see the CSVision dashboard.
+      </div>
+
     </div>
 </template>
 
@@ -87,20 +90,16 @@ export default {
     }
   },
   methods:{
-    Visiualise(){
-        this.store.state.dashboard = !this.store.state.dashboard
-        setTimeout(()=>{this.store.state.dashboard = !this.store.state.dashboard},1)
-        
-      },
+    
   },
   watch:{
     xaxis(val){
       this.store.state.xaxis = val
-      this.Visiualise()
+      this.store.methods.Visiualise()
     },
     yaxis(val){
       this.store.state.yaxis = val
-      this.Visiualise()
+      this.store.methods.Visiualise()
     }
   }
 }

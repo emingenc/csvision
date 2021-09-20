@@ -20,7 +20,9 @@ const defaultState = {
   },
 
   xaxis:null, //xaxis
+  xaxisData:null, //xaxis
   yaxis:null, //yaxis
+  yaxisData:null, //yaxis
   dashboard:false,
   
 }
@@ -35,6 +37,11 @@ const getDefaultState = () => {
 const state = reactive(getDefaultState());
 
 const methods = {
+  Visiualise(){
+    state.yaxisData = getters.getRowData(state.yaxis)
+    state.xaxisData = getters.getRowData(state.xaxis)
+    
+  },
   
 }
 

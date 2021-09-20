@@ -1,7 +1,7 @@
 <template>
-  <q-page class="flex flex-center q-pa-md">
+  <q-page class="flex justify-around q-pa-md">
     <div>
-      <Uploader v-if="!(store.state.columnsCsv)" />
+      <Uploader class="fixed-center" v-if="!(store.state.columnsCsv)" />
       <Dashboard v-if="store.state.columnsCsv"/>
       <Table v-if="store.state.columnsCsv" />
     </div>
