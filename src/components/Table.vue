@@ -62,7 +62,6 @@
         />
 
         <q-select
-        v-if = ''
         class='q-pl-xl q-pt-sm'
         label-color="primary"
         filled
