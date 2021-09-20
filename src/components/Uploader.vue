@@ -78,6 +78,7 @@ export default {
           this.store.state.visibleColumns = [...tableCollumns]
           this.store.state.visibleColumns = this.store.state.visibleColumns.map(e => e.name)
           this.store.state.xaxis = this.store.state.visibleColumns[0]
+          this.store.state.filterColumnName = this.store.state.visibleColumns[0]
           this.store.state.yaxis = this.store.state.visibleColumns[this.store.state.visibleColumns.length-1]
 
           const tableRows = []

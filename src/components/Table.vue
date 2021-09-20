@@ -128,10 +128,11 @@ export default {
     const $q = useQuasar()
     let stringOptions = [...store.state.visibleColumns]
     let options = ref(stringOptions)
+    let column = store.state.filterColumnName
     return {
       store ,
       options,
-      column: ref(null),
+      column,
       filter: ref(''),
       filterFn (val, update) {
         if (val === '') {
@@ -165,8 +166,10 @@ export default {
         }
        
       })
+      this.store.state.filteredRows = result
       return result
       } catch (error) {
+        this.store.state.filteredRows =rows
         return rows
       }
       

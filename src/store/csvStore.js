@@ -22,6 +22,7 @@ const defaultState = {
   xaxis:null, //xaxis
   yaxis:null, //yaxis
   dashboard:false,
+  filterColumnName:null,
   
 }
 const getDefaultState = () => {
@@ -40,7 +41,13 @@ const methods = {
 
 const getters = {
   getRowData: (rowKey)=> {
-      if( state.rowsCsv){
+      if( state.filteredRows){
+      let rows = state.filteredRows.map(el => {
+        return el[rowKey]
+      })
+      return rows
+    }
+    else if (state.rowsCsv){
       let rows = state.rowsCsv.map(el => {
         return el[rowKey]
       })
