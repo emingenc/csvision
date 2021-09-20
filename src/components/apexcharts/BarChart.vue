@@ -8,44 +8,29 @@
 </template>
 
 <script>
-import { defineComponent , inject} from 'vue';
+import { defineComponent , inject, computed} from 'vue';
 
 
 export default defineComponent({
   
   setup(){
     const store = inject("csvStore");
-    const xaxis = store.getters.getRowData(store.state.xaxis)
-    const yaxis = store.getters.getRowData(store.state.yaxis)
-    const yaxisSelected = store.state.yaxis
-    const xaxisSelected = store.state.xaxis
-    const options = () => {return {
-        chart: {
-          id: 'vuechart-example'
-        },
-        xaxis: {
-          categories: xaxis
-        }
-      }
-  }
-    const series =()=>{return [{
-        name: yaxisSelected,
-        data: yaxis
-      }]}
     return{
       store,
-      yaxisSelected,
-      xaxisSelected,
-      options: options(),
-      series: series()
+      options : computed(() => {return {
+        chart: {
+          id: 'barchart'
+        },
+        xaxis: {
+          categories: store.state.xaxisData
+        }
+      }}),
+      series : computed(()=>{return [{
+        name: store.state.yaxis,
+        data: store.state.yaxisData
+      }]})
+
     }
-  },
-  watch:{
-    yaxisSelected(){
-      this.options = this.options()
-      this.series = this.series()
-    }
-    
   },
 })
 </script>

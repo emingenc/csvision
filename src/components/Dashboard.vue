@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-center ">
     <div class="row " v-if="store.state.dashboard">
-      <!-- <BarChart/> -->
+      <BarChart/>
       <div>
       <PieChart/>
       </div>
@@ -11,14 +11,14 @@
 
 <script>
 import { defineComponent , inject} from 'vue';
-//import BarChart from "components/apexcharts/BarChart.vue";
+import BarChart from "components/apexcharts/BarChart.vue";
 import PieChart from "components/apexcharts/PieChart.vue";
 
 
 export default defineComponent({
   name: 'PageIndex',
   components: {
-   // BarChart,
+   BarChart,
     PieChart,
   },
   setup(){
