@@ -171,18 +171,18 @@ export default {
       })
       this.store.state.filteredRows = result
 
-      if(this.store.state.dashboard){
+      
         this.store.state.dashboard = !this.store.state.dashboard
         setTimeout(()=>{this.store.state.dashboard = !this.store.state.dashboard},1)
-      }
+      
       return result
       } catch (error) {
         this.store.state.filteredRows =rows
         
-        if(this.store.state.dashboard){
+        
         this.store.state.dashboard = !this.store.state.dashboard
         setTimeout(()=>{this.store.state.dashboard = !this.store.state.dashboard},1)
-      }
+      
 
         return rows
       }
