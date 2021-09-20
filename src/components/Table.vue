@@ -131,7 +131,7 @@ export default {
     const $q = useQuasar()
     let stringOptions = store.state.visibleColumns?[...store.state.visibleColumns]:[]
     let options = ref(stringOptions)
-    let column = store.state.filterColumnName
+    let column = ref('')
     return {
       store ,
       options,

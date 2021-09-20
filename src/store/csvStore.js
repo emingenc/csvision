@@ -22,7 +22,6 @@ const defaultState = {
   xaxis:null, //xaxis
   yaxis:null, //yaxis
   dashboard:false,
-  filterColumnName:null,
   
 }
 const getDefaultState = () => {
