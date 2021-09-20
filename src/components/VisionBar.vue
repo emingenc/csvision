@@ -50,6 +50,7 @@
           </q-item>
         </template>
       </q-select>
+      <q-btn @click='Visiualise' flat round color="white" icon="refresh" />
     </div>
 </template>
 
