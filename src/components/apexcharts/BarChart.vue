@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="600" type="bar" 
+      <apexchart v-if="store.state.columnsCsv" width="1000" type="bar" 
       :options="options" :series="series"></apexchart>
     </div>
   </q-page>
