@@ -40,9 +40,12 @@
       :visible-columns="store.state.visibleColumns"
     >
    
-    <template v-slot:top-right>
+    <template 
+    v-if="store.state.visibleColumns" 
+     v-slot:top-right>
 
         <q-select
+        
           v-model="store.state.visibleColumns"
           multiple
           outlined
@@ -59,6 +62,7 @@
         />
 
         <q-select
+        v-if = ''
         class='q-pl-xl q-pt-sm'
         label-color="primary"
         filled
