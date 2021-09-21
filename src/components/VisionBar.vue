@@ -1,13 +1,13 @@
 <template>
-  <div class="q-pt-xl  row flex justify-around bg-primary  fill">
-      <div class='q-ml-md q-pr-xl  q-mb-lg row text-white text-caption'>
+  <div class="  row flex justify-around bg-primary  ">
+      <div class='  row text-white text-caption'>
      
       <q-checkbox  v-model="store.state.dashboard" label="Dashboard" />
       </div>
       <div v-if="store.state.dashboard" class="row">
 
       <q-select
-        class='q-ml-xl q-pb-lg'
+        class='q-ml-xl '
         label-color="white"
         filled
         v-model="xaxis"
@@ -29,7 +29,7 @@
       </q-select>
 
       <q-select
-      class='q-ml-xl q-pb-lg'
+      class='q-ml-xl '
       label-color="white"
         filled
         v-model="yaxis"
