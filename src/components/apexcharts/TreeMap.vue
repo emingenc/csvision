@@ -1,54 +1,44 @@
 <template>
   <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="300" type="treemap" 
+      <apexchart v-if="store.state.columnsCsv" width="700" type="treemap" 
       :options="options" :series="series"></apexchart>
     </div>
   </q-page>
 </template>
 
 <script>
-import { defineComponent , inject} from 'vue';
+import { defineComponent , inject,computed} from 'vue';
 
 
 export default defineComponent({
   
   setup(){
     const store = inject("csvStore");
-    const xaxis = store.getters.getRowData(store.state.xaxis)
-    const yaxis = store.getters.getRowData(store.state.yaxis)
-    const yaxisSelected = store.state.yaxis
-    const xaxisSelected = store.state.xaxis
-    const options = () => {
-      return{
+    const options =  {
         legend: {
               show: false
             },
         chart: {
-          height: 350,
+          height: 1200,
           type: 'treemap'
         },
         title: {
           text: 'Basic Treemap'
         }
-      }}
-    const series =()=>{return {
-      data: yaxis,
-      labels: xaxis}}
+      }
+    const series =computed(()=>{return [{
+      data: store.state.xaxisData.map((e,i)=>{
+        return {x:e , y:store.state.yaxisData[i]} }
+        )
+        }]})
+      
     return{
       store,
-      yaxisSelected,
-      xaxisSelected,
-      options: options(),
-      series: series()
-    }
-  },
-  watch:{
-    yaxisSelected(){
-      this.options = this.options()
-      this.series = this.series()
-    }
+      options:options,
+      series:series
     
+    }
   },
 })
 </script>

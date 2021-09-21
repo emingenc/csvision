@@ -1,10 +1,11 @@
 <template>
   <div class="flex flex-center ">
-    <div class="row " v-if="store.state.dashboard">
+    <div class="row q-pa-lg" v-if="store.state.dashboard">
       <BarChart/>
-      <div>
+      
       <PieChart/>
-      </div>
+      
+      <TreeMap/>
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
 import { defineComponent , inject} from 'vue';
 import BarChart from "components/apexcharts/BarChart.vue";
 import PieChart from "components/apexcharts/PieChart.vue";
+import TreeMap from "components/apexcharts/TreeMap.vue";
 
 
 export default defineComponent({
@@ -20,6 +22,7 @@ export default defineComponent({
   components: {
    BarChart,
     PieChart,
+    TreeMap
   },
   setup(){
     const store = inject("csvStore");
