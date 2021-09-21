@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-center ">
     <div class="row q-pa-lg" v-if="store.state.dashboard">
-      <BarChart/>
+      <BarChart v-if="store.state.visibleCharts.includes('barChart')"/>
       
       <div class="row">
-          <PieChart/>
-         <TreeMap/>
+         <TreeMap v-if="store.state.visibleCharts.includes('treeMap')"/>
+          <PieChart v-if="store.state.visibleCharts.includes('pieChart')"/>
       </div>
       
     </div>

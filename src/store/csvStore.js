@@ -24,6 +24,7 @@ const defaultState = {
   yaxis:null, //yaxis
   yaxisData:null, //yaxis
   dashboard:false,
+  visibleCharts:['barChart','treeMap','pieChart']
   
 }
 const getDefaultState = () => {
