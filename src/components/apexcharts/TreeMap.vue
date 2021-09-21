@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center q-pa-md width">
     <div>
-      <apexchart v-if="store.state.columnsCsv" width="700" type="treemap" 
+      <apexchart v-if="store.state.columnsCsv" width="1100" type="treemap" 
       :options="options" :series="series"></apexchart>
     </div>
   </q-page>
@@ -16,17 +16,13 @@ export default defineComponent({
   setup(){
     const store = inject("csvStore");
     const options =  {
-        legend: {
-              show: false
-            },
-        chart: {
-          height: 1200,
-          type: 'treemap'
-        },
-        title: {
-          text: 'Basic Treemap'
-        }
-      }
+                      plotOptions: {
+                        treemap: {
+                          distributed: true,
+                          enableShades: false
+                        }
+                      }
+                    }
     const series =computed(()=>{return [{
       data: store.state.xaxisData.map((e,i)=>{
         return {x:e , y:store.state.yaxisData[i]} }
