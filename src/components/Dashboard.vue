@@ -3,9 +3,11 @@
     <div class="row q-pa-lg" v-if="store.state.dashboard">
       <BarChart/>
       
-      <PieChart/>
+      <div class="row">
+          <PieChart/>
+         <TreeMap/>
+      </div>
       
-      <TreeMap/>
     </div>
   </div>
 </template>
