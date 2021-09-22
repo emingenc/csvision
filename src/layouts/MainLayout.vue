@@ -67,7 +67,7 @@ const linksList = [
     link: 'https://discord.gg/mMWGmBWE'
   },
   {
-    title: 'Personel website',
+    title: 'Personal website',
     caption: 'emingenc.github.io',
     icon: 'public',
     link: 'https://emingenc.github.io'
