@@ -13,7 +13,6 @@
         icon="home"
         label="  Upload csv"
         multiple
-        :filter="checkFileType"
         @rejected="onRejected"
       >
       <template v-if="!filesCsv" v-slot:prepend>
