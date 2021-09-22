@@ -13,6 +13,7 @@
         icon="home"
         label="  Upload csv"
         multiple
+        :max-file-size="String(1024*50)"
         @rejected="onRejected"
       >
       <template v-if="!filesCsv" v-slot:prepend>
@@ -50,7 +51,7 @@ export default {
         // https://quasar.dev/quasar-plugins/notify#Installation
         $q.notify({
           type: 'negative',
-          message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+          message: `${rejectedEntries.length} file should be less than 10 Kb and csv format for demo`
         })
       }
     }
